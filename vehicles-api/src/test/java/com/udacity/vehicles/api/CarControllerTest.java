@@ -4,9 +4,8 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.http.MediaType.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -87,8 +86,8 @@ public class CarControllerTest {
         mvc.perform(
                         post(new URI("/cars"))
                                 .content(json.write(car).getJson())
-                                .contentType(MediaType.APPLICATION_JSON_UTF8)
-                                .accept(MediaType.APPLICATION_JSON_UTF8))
+                                .contentType(APPLICATION_JSON_UTF8)
+                                .accept(APPLICATION_JSON_UTF8))
                 .andExpect(status().isCreated());
     }
 
@@ -111,6 +110,7 @@ public class CarControllerTest {
         MvcResult mvcResult = mvc.perform(
                         get(new URI("/cars"))
                 ).andExpect(status().isOk())
+                .andDo(print())
                 .andReturn();
 
         Assert.assertTrue(mvcResult.getResponse().getContentAsString().contains(carJson.substring(1, carJson.length() - 1)));
@@ -135,6 +135,7 @@ public class CarControllerTest {
         mvc.perform(
                         get("/cars/{id}", 1)
                 ).andExpect(status().isOk())
+                .andDo(print())
                 .andExpect(content().json(carJson));
     }
 
@@ -160,6 +161,24 @@ public class CarControllerTest {
 
         Assert.assertFalse(mvcResult.getResponse().getContentAsString().contains(carJson.substring(1, carJson.length() - 1)));
     }
+
+
+    @Test
+    public void updateCar() throws Exception {
+        Car car = getCar();
+        car.setId(1L);
+        String carJson = this.json.write(car).getJson();
+
+        mvc.perform(
+                        put("/cars/{id}", 1)
+                                .content(json.write(car).getJson())
+                                .contentType(APPLICATION_JSON_UTF8)
+                                .accept(APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+                .andExpect(content().json(carJson));
+    }
+
 
     /**
      * Creates an example Car object for use in testing.
