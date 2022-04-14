@@ -22,3 +22,6 @@ Create/Retrive/Update/Delete a Vehicle.
 - A REST WebService that simulates a backend that would store and retrieve the price of a vehicle given a vehicle id as input. 
 - A microservice registered on a Eureka server.
 - Additional tests for the microservice.
+
+## Boogle Maps
+A Mock that simulates a Maps WebService where, given a latitude longitude, will return a random address.
