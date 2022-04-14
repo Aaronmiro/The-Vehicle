@@ -6,7 +6,7 @@ A backend system to maintain vehicle data and to provide a complete view of vehi
 - Used Swagger to implement API documentation.
 - Tests for the controller classes.
 
-### Functions 
+### Operations 
 Create/Retrive/Update/Delete a Vehicle.
 
 ### Features
