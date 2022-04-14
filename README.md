@@ -2,12 +2,12 @@
 A backend system to maintain vehicle data and to provide a complete view of vehicle details including price and address.
 
 ## Vehicles API
-A REST-based Vehicles API that communicates with a location and pricing service using Java and Spring Boot
-Used Swagger to implement API documentation
-Tests for the controller classes
+A REST-based Vehicles API that communicates with a location and pricing service using Java and Spring Boot.
+Used Swagger to implement API documentation.
+Tests for the controller classes.
 
 ### Functions 
-Create/Retrive/Update/Delete a Vehicle
+Create/Retrive/Update/Delete a Vehicle.
 
 ### Features
 REST API exploring the main HTTP verbs and features
@@ -20,5 +20,5 @@ Automatic model mapping
 
 ## Pricing Setvice
 A REST WebService that simulates a backend that would store and retrieve the price of a vehicle given a vehicle id as input. 
-A microservice registered on a Eureka server
+A microservice registered on a Eureka server.
 Additional tests for the microservice.
