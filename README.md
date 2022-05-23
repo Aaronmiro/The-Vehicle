@@ -18,7 +18,7 @@ Create/Retrive/Update/Delete a Vehicle.
 - MVC Test
 - Automatic model mapping
 
-## Pricing Setvice
+## Pricing Service
 - A REST WebService that simulates a backend that would store and retrieve the price of a vehicle given a vehicle id as input. 
 - A microservice registered on a Eureka server.
 - Additional tests for the microservice.
